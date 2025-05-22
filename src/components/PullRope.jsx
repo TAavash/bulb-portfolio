@@ -2,24 +2,47 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 
-export default function PullRope({ onPull }) {
+export default function PullRope({
+  onPull,
+  hidden = false,
+  mode = "dark",
+  withBulb = false,
+  bulb = null,
+}) {
   const [isPulled, setIsPulled] = useState(false);
 
   const handleClick = () => {
+    if (hidden) return;
+    console.log("Rope pulled"); // For debugging
     setIsPulled(true);
     onPull?.();
-    setTimeout(() => setIsPulled(false), 600);
+    setTimeout(() => setIsPulled(false), 300); // reset rope after 0.3s
   };
 
+  const ropeColor =
+    mode === "light"
+      ? "bg-green-400"
+      : mode === "red"
+      ? "bg-red-500"
+      : "bg-gray-400";
+
+  const ropeHeight = isPulled ? "h-60" : "h-48";
+
   return (
-    <motion.div
+    <div
+      className="flex flex-col items-center select-none"
       onClick={handleClick}
-      animate={isPulled ? { y: [0, 60, -25, 0] } : { y: 0 }}
-      transition={{ duration: 0.6, easing: "ease-in-out" }}
-      className="w-1 h-40 bg-black relative"
-      style={{ cursor: "pointer" }}
+      style={{ cursor: hidden ? "default" : "pointer" }}
     >
-      <div className="w-4 h-4 bg-black rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2" />
-    </motion.div>
+      <motion.div
+        className={`w-1 ${ropeColor} transition-all duration-300 ease-out ${ropeHeight}`}
+        key={isPulled ? "pulled" : "idle"}
+      />
+      <div className="mt-1 pointer-events-none">
+        {withBulb && bulb ? bulb : (
+          <div className={`w-4 h-4 rounded-full ${ropeColor}`} />
+        )}
+      </div>
+    </div>
   );
 }

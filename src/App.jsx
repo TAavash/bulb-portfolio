@@ -1,10 +1,13 @@
-import React from 'react'
-import Hero from './components/Hero'
+// App.js
+import React, { useState } from "react";
+import Hero from "./components/Hero";
 
-const App = () => {
+function App() {
+  const [mode, setMode] = useState("dark"); // 'light', 'dark', or 'red'
+
   return (
-    <div><Hero/></div>
-  )
+    <Hero mode={mode} setMode={setMode} />
+  );
 }
 
-export default App
+export default App;
