@@ -1,5 +1,5 @@
 // components/PullRope.js
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "motion/react";
 
 export default function PullRope({
@@ -8,15 +8,30 @@ export default function PullRope({
   mode = "dark",
   withBulb = false,
   bulb = null,
+  dragOnly = false, // 🔧 NEW PROP
 }) {
   const [isPulled, setIsPulled] = useState(false);
+  const startY = useRef(null);
 
-  const handleClick = () => {
+  const handleStart = (e) => {
     if (hidden) return;
-    console.log("Rope pulled"); // For debugging
-    setIsPulled(true);
-    onPull?.();
-    setTimeout(() => setIsPulled(false), 300); // reset rope after 0.3s
+    startY.current = e.clientY || e.touches?.[0]?.clientY;
+  };
+
+  const handleEnd = (e) => {
+    if (hidden) return;
+
+    const endY = e.clientY || e.changedTouches?.[0]?.clientY;
+    const deltaY = endY - startY.current;
+
+    const wasPulled = dragOnly ? deltaY > 30 : true; // ⬇️ threshold to consider as pull
+
+    if (wasPulled) {
+      console.log("Rope pulled");
+      setIsPulled(true);
+      onPull?.();
+      setTimeout(() => setIsPulled(false), 300);
+    }
   };
 
   const ropeColor =
@@ -31,14 +46,17 @@ export default function PullRope({
   return (
     <div
       className="flex flex-col items-center select-none"
-      onClick={handleClick}
+      onMouseDown={handleStart}
+      onMouseUp={handleEnd}
+      onTouchStart={handleStart}
+      onTouchEnd={handleEnd}
       style={{ cursor: hidden ? "default" : "pointer" }}
     >
       <motion.div
         className={`w-1 ${ropeColor} transition-all duration-300 ease-out ${ropeHeight}`}
         key={isPulled ? "pulled" : "idle"}
       />
-      <div className="mt-1 pointer-events-none">
+      <div className="mt-1 pointer-events-none rotate-180">
         {withBulb && bulb ? bulb : (
           <div className={`w-4 h-4 rounded-full ${ropeColor}`} />
         )}

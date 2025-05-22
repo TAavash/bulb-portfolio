@@ -1,5 +1,3 @@
-// components/Bulb.js
-import React from "react";
 import InteractiveBulb from "./InteractiveBulb";
 import PullRope from "./PullRope";
 
@@ -14,20 +12,25 @@ const Bulb = ({ mode, setMode }) => {
 
   return (
     <div className="relative flex justify-center items-center w-48 h-64">
-      {/* Left rope with bulb */}
+      {/* Left rope with bulb - only triggers on drag */}
       <div className="absolute left-0 top-0">
         <PullRope
           onPull={toggleRed}
-          hidden={false} // for now make visible to test
+          hidden={false}
           mode={mode}
           withBulb
           bulb={<InteractiveBulb mode={mode} />}
+          dragOnly={true} // 🧠 Only respond to drag
         />
       </div>
 
-      {/* Right rope to toggle light/dark */}
+      {/* Right rope - works on click or pull */}
       <div className="absolute right-0 top-0">
-        <PullRope onPull={toggleLight} mode={mode} />
+        <PullRope
+          onPull={toggleLight}
+          mode={mode}
+          dragOnly={false} // (optional - false by default)
+        />
       </div>
     </div>
   );

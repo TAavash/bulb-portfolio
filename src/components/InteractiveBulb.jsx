@@ -20,15 +20,17 @@ const InteractiveBulb = ({ mode }) => {
 
   return (
     <motion.div
-      style={{
-        fontSize: "2rem",
-        color,
-        textShadow: glow,
-        transition: "all 0.3s ease",
-      }}
-    >
-      <FaLightbulb />
-    </motion.div>
+  style={{
+    transform: "rotate(180deg)", // rotate upside down
+    fontSize: "2rem",
+    color,
+    textShadow: glow,
+    transition: "all 0.3s ease",
+  }}
+>
+  <FaLightbulb />
+</motion.div>
+
   );
 };
 
