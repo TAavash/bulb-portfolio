@@ -4,7 +4,13 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'spin-slow': 'spin 10s linear infinite reverse',
+        "spin-reverse": "spin-reverse 20s linear infinite",
+      },
+      keyframes: {
+        "spin-reverse": {
+          from: { transform: "rotate(360deg)" },
+          to: { transform: "rotate(0deg)" },
+        },
       },
       fontFamily: {
         monofett: ["Monofett", "cursive"],
