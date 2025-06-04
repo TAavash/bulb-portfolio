@@ -10,11 +10,12 @@ const Technologies = () => {
 
   // Define 12 square path positions
   const positions = [
-    [0, 0], [1, 0], [2, 0], [3, 0],
-    [3, 1], [3, 2],
-    [3, 3], [2, 3], [1, 3], [0, 3],
-    [0, 2], [0, 1],
-  ];
+  [0, 0], [0, 1], [0, 2], [0, 3],    // left column down (↓)
+  [1, 3], [2, 3],                    // bottom row →
+  [3, 3], [3, 2], [3, 1], [3, 0],    // right column up (↑)
+  [2, 0], [1, 0],                    // top row ←
+];
+
 
   const gap = (containerSize - cardSize) / (gridSize - 1);
 
