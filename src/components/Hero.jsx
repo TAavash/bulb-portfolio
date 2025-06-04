@@ -2,7 +2,7 @@ import Bulb from "./Bulb";
 import Technologies from "./Technologies";
 
 const Hero = ({ mode, setMode }) => {
-  const gradient =
+const gradient =
     mode === "light"
       ? "linear-gradient(180deg, #ccffcc 0%, #f2fbe0 100%)"
       : mode === "red"
@@ -18,9 +18,9 @@ const Hero = ({ mode, setMode }) => {
 
   return (
     <div
-      className={`relative w-screen h-screen flex items-center justify-center px-6 ${textColor}`}
-      style={{ background: gradient }}
-    >
+  className={`relative w-screen h-screen flex items-center justify-center px-6 ${textColor}`}
+  style={{ background: gradient }}
+>
       {/* Absolute Bulb */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-30">
         <Bulb mode={mode} setMode={setMode} />

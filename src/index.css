@@ -2,13 +2,45 @@
 
 @import "tailwindcss";
 
-:root {
+/* :root {
   font-family: "Inter", sans-serif;
-}
+} */
 
 @font-face {
   font-family: 'Monofett';
   src: url('./assets/Monofett-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+:root {
+  --bg-color: #000011;
+  --text-color: white;
+  --bulb-color: #888;
+  --glow: none;
+}
+
+.dark-theme {
+  --bg-color: #000011;
+  --text-color: white;
+  --bulb-color: #888;
+  --glow: none;
+}
+
+.light-theme {
+  --bg-color: #f2fbe0;
+  --text-color: black;
+  --bulb-color: #ccff99;
+  --glow: 0 0 20px #ccff99;
+}
+
+.red-theme {
+  --bg-color: #330000;
+  --text-color: #ffcccc;
+  --bulb-color: #ff9999;
+  --glow: 0 0 20px #ff9999;
+}
+
+body, html {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
