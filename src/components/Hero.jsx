@@ -1,6 +1,7 @@
 import Bulb from "./Bulb";
 import Navbar from "./Navbar";
 import Technologies from "./Technologies";
+import { HERO_CONTENT } from "../assets/constants";
 
 const Hero = ({ mode, setMode }) => {
   const gradient =
@@ -57,9 +58,7 @@ const Hero = ({ mode, setMode }) => {
             Full Stack Developer
           </h2>
           <p className="text-sm text-center leading-relaxed light:text-black">
-            I'm a passionate full-stack developer with a love for creating
-            visually stunning and engaging experiences. I aim to build
-            user-centric, visually appealing digital solutions.
+            {HERO_CONTENT}
           </p>
         </div>
 
