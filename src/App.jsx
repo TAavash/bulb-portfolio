@@ -1,4 +1,3 @@
-// App.js
 import { useState, useEffect } from "react";
 import Loader from "./components/Loader";
 import Hero from "./components/Hero";
@@ -28,7 +27,6 @@ function App() {
         <div className="absolute top-0 z-[-2] h-screen w-screen bg-[var(--bg-color)]"></div>
       </div>
 
-      {/* Content */}
       <div className="container">
         {loading ? (
           <Loader />
