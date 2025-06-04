@@ -39,9 +39,9 @@ export default function PullRope({
       ? "bg-green-400"
       : mode === "red"
       ? "bg-red-500"
-      : "bg-gray-400";
+      : "bg-gray-200";
 
-  const ropeHeight = isPulled ? "h-60" : "h-48";
+  const ropeHeight = isPulled ? "h-96" : "h-80";
 
   return (
     <div

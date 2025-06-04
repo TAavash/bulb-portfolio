@@ -18,45 +18,50 @@ const Hero = ({ mode, setMode }) => {
 
   return (
     <div
-      className={`w-screen h-screen flex items-center justify-center px-10 ${textColor}`}
+      className={`relative w-screen h-screen flex items-center justify-center px-6 ${textColor}`}
       style={{ background: gradient }}
     >
-      <div className="flex flex-col md:flex-row gap-12 items-center justify-between w-full max-w-6xl">
-        {/* Left Section */}
-        <div className="flex flex-col items-start gap-5 max-w-md">
+      {/* Absolute Bulb */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-30">
+        <Bulb mode={mode} setMode={setMode} />
+      </div>
+
+      {/* Absolute "THINK OUTSIDE THE BOX" Text */}
+      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20 text-center">
+        <h1
+          className="text-3xl md:text-5xl"
+          style={{ fontFamily: "Monofett" }}
+        >
+          THINK OUTSIDE THE <br />
+          <span className="block mt-1">BOX</span>
+        </h1>
+      </div>
+
+      {/* Background Grid Layout */}
+      <div className="z-10 grid grid-cols-1 md:grid-cols-3 items-center w-full max-w-6xl gap-10">
+        {/* Left - Profile */}
+        <div className="flex flex-col items-start gap-4 max-w-sm">
           <img
             src="/aavash.png"
             alt="Aavash Tamang"
-            className="w-40 h-40 object-cover rounded-xl border-2 border-white shadow-lg"
+            className="w-32 h-32 rounded-xl border-2 border-white shadow-lg"
           />
-          <h1 className="text-4xl font-bold">Aavash Tamang</h1>
-          <h2 className="text-2xl font-semibold text-cyan-400">
+          <h1 className="text-3xl font-bold">Aavash Tamang</h1>
+          <h2 className="text-xl text-cyan-400 font-semibold">
             Full Stack Developer
           </h2>
-          <p className="text-sm leading-relaxed text-gray-300">
-            I'm a passionate full-stack developer with a profound love for
-            creating visually stunning and engaging experiences. My goal is to
-            advance and create visually appealing designs and projects to
-            captivate users.
+          <p className="text-sm text-gray-300 leading-relaxed">
+            I'm a passionate full-stack developer with a love for creating
+            visually stunning and engaging experiences. I aim to build
+            user-centric, visually appealing digital solutions.
           </p>
         </div>
 
-        {/* Center Title with Bulb */}
-        <div className="relative flex flex-col items-center">
-          <div
-            className="text-2xl md:text-4xl tracking-wide text-center"
-            style={{ fontFamily: "Monofett" }}
-          >
-            THINK OUTSIDE THE <br />
-            <span className="block text-center mt-2">BOX</span>
-          </div>
-          <div className="absolute top-full mt-4">
-            <Bulb mode={mode} setMode={setMode} />
-          </div>
-        </div>
+        {/* Empty Middle Column — just to leave space behind the floating section */}
+        <div className="hidden md:block"></div>
 
-        {/* Technologies */}
-        <div className="grid grid-cols-3 gap-4">
+        {/* Right - Technologies */}
+        <div className="grid grid-cols-3 gap-4 justify-items-center">
           <Technologies />
         </div>
       </div>
