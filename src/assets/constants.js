@@ -36,8 +36,8 @@ export const technologies = [
     icon: "/icons/mongodb.png",
   },
   {
-    name: "Figma",
-    icon: "/icons/figma.png",
+    name: "Laravel",
+    icon: "/icons/laravel.png",
   },
   {
     name: "Flutter",

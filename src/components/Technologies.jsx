@@ -55,7 +55,7 @@ const Technologies = () => {
               key={tech.id}
               layout
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              className="absolute bg-white rounded-xl shadow-md flex flex-col items-center justify-center p-2"
+              className="absolute bg-white border-4 border-[#D4D4D4] rounded-lg shadow-md flex flex-col items-center justify-center p-2"
               style={{
                 width: `${cardSize}px`,
                 height: `${cardSize}px`,
@@ -63,8 +63,7 @@ const Technologies = () => {
                 top: `${y * gap}px`,
               }}
             >
-              <img src={tech.icon} alt={tech.name} className="w-8 h-8" />
-              <p className="text-[10px] mt-1 text-black text-center">{tech.name}</p>
+              <img src={tech.icon} alt={tech.name} className="w-[50px] h-[50px]" />
             </motion.div>
           );
         })}

@@ -27,7 +27,7 @@ const Hero = ({ mode, setMode }) => {
       </div>
 
       {/* Absolute "THINK OUTSIDE THE BOX" Text */}
-      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20 text-center">
+      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-[-20] text-center select-none">
         <h1
           className="text-3xl md:text-5xl"
           style={{ fontFamily: "Monofett" }}
