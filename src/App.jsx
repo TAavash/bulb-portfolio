@@ -33,7 +33,7 @@ function App() {
         ) : (
           <>
             <Hero mode={mode} setMode={setMode} />
-            <Experience /> 
+            {/* <Experience />  */}
           </>
         )}
       </div>
